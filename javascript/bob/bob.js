@@ -6,9 +6,34 @@
 var Bob = function() {};
 
 Bob.prototype.hey = function(input) {
-//
-// YOUR CODE GOES HERE
-//
+
+var silent= function (input) {
+  return /^\s*$/.test(input);
+};
+
+var shout= function (input) {
+  return input.toUpperCase() === input && input.toLowerCase() !== input;
+};
+
+var question = function (input) {
+  return input.charAt(input.length -1) === '?';
+};
+
+this.hey = function (input) {
+  if (shout(input)) {
+    return 'Whoa, chill out!';
+  }
+
+  if (silent(input)) {
+    return 'Fine. Be that way!';
+  }
+
+  if (question(input)) {
+    return 'Sure.';
+  }
+
+  return 'Whatever.';
+  };
 };
 
 module.exports = Bob;
